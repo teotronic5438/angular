@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-7">
+    <div class="col-6">
       <h3 class="text-center text-primary my-2">{{titulo}}</h3>
       <!-- <div *ngFor="let empleado of empleados; index as i;">{{empleado.nombre}}</div> -->
       <table class="table">
@@ -25,19 +25,34 @@
       </table>
     </div>
 
-    <div class="col-5">
-      <h3>Agregando Empledos</h3>
+    <div class="col-6">
+      <h3 class="bg-primary-subtle text-center p-2">Agregando Empledos</h3>
       <div class="mb-3 row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+        <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
         <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+          <input type="text" class="form-control" id="nombre" [(ngModel)]="cuadroNombre">
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+        <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword">
+          <input type="text" class="form-control" id="apellido" [(ngModel)]="cuadroApellido">
         </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="cargo" class="col-sm-2 col-form-label">Cargo</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="cargo" [(ngModel)]="cuadroCargo">
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="salario" class="col-sm-2 col-form-label">Salario</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="salario" [(ngModel)]="cuadroSalario">
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary w-25" type="submit">Agregar</button>
       </div>
     </div>
   </div>

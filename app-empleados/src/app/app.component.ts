@@ -14,4 +14,9 @@ export class AppComponent {
     new Empleado("Marcos", "Juares", "Operario", 5500),
     new Empleado("Tomy", "Lopez", "Oficial", 4500),
   ];
+
+  cuadroNombre:string ="";
+  cuadroApellido:string ="";
+  cuadroCargo:string ="";
+  cuadroSalario:number =0;
 }
