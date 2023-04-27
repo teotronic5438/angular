@@ -1,0 +1,104 @@
+<div class="container">
+  <app-encabezado></app-encabezado>
+  <div>
+    <h2>Prueba de Expresiones</h2>
+    <div>
+      <input placeholder="ingrese su telefono" type="number"/>
+      <p>El número de teléfono es: {{telefono}}</p>
+      <hr />
+      <ul>
+        <!-- Computar una suma-->
+        <li>{{5 + 5}}</li>
+        
+        <!-- Concatenar varibales-->
+        <li>{{fruta + " " + verdura}}</li>
+        
+        <!-- Mostrar propiedades de un objeto -->
+        <li>
+          la ciudad de {{ciudad.nombre}} tiene {{ciudad.poblacion}} habitantes
+        </li>
+    
+        <!-- Formatear salidas  -->
+        <li>{{ pi | number:'1.1-2'}}</li>
+    
+        <!-- Acceder metódos -->
+        <li>Fruta tiene: {{fruta.length}} letras</li>
+    
+        <!-- Llamar a funciones del controlador -->
+        <li>{{helloWorld()}}</li>
+      </ul>
+    </div>
+  </div>
+  <hr />
+  <div>
+    <h3 class="text-primary">Uso de *ngIf</h3>  <!-- si revelar_identidad es falso, se oculta identidad-->
+    <p>El valor de la identidad oculta es: <b class="text-danger">{{ revelar_identidad }}</b></p>
+    <p>=> Entonces Ironman es <span *ngIf="revelar_identidad">{{ironman}}</span></p>
+
+    <!-- Ahora haremos un ngIf con dos posibles resultados, usando ng-template-->
+    <div *ngIf="revelar_identidad; then no_secreto else secreto"></div>
+    <ng-template #secreto><p>¿Quien es Ironman?...</p></ng-template>
+    <ng-template #no_secreto> <p>{{ironman}}</p></ng-template>
+
+    <!-- Se va a activar "text-danger" si revelar_identidad es verdadero.
+         Si la variable revelar_identidad es falsa se usará la clase "text-success". -->
+    <div [ngClass]="{'text-success': revelar_identidad, 'text-danger': !revelar_identidad}">{{ revelar_identidad }}</div>
+
+    <!-- <button class="btn btn-warning" (click)="cambiarClase()">Revelar / Ocultar - identidad</button> -->
+
+    <div *ngIf="revelar_identidad; then revelado else ocultado"></div>
+    <ng-template #ocultado><button class="btn btn-danger" (click)="cambiarClase()">Revelar Identidad</button></ng-template>
+    <ng-template #revelado><button class="btn btn-success" (click)="cambiarClase()">Ocultar Identidad</button></ng-template>
+
+    <br />
+    <hr />
+    <br />
+
+    <h3>Uso de *ngFor con *ngSwitch</h3>
+    <p>Las armaduras usadas por IronMan son:</p>
+    <ul [ngSwitch]="usar">
+      <li *ngFor="let armadura of armaduras">
+        {{armadura}} <b *ngSwitchCase="1"></b>
+      </li>
+    </ul>
+
+    <br />
+    <hr />
+    <br />
+
+    <h3>Uso de *ngSwitch con *ngSwitch</h3>
+    <ul [ngSwitch]="superhero">
+      <li *ngSwitchCase="'Groot'">Groot</li>
+      <li *ngSwitchCase="'Ironman'">Ironman</li>
+      <li *ngSwitchCase="'Hulk'">Hulk</li>
+      <li *ngSwitchCase="'Thor'">Thor</li>
+      <li *ngSwitchCase="'Spiderman'">Spiderman</li>
+      <li *ngSwitchDefault>Batman</li>
+    </ul>
+  </div>
+
+  <hr />
+  <h3 class="text-center text-primary">Uso de propiedades ngModel - dataBinding</h3>
+  <div class="datos bg-info bg-opacity-50 p-3">
+    <div class="mb-3">
+      <label class="form-label">Nombre: </label> 
+      <input class="form-control" placeholder="Ingrese su Nombre" type="text" [(ngModel)]="nombre"/>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Telefono: </label> 
+      <input class="form-control" placeholder="Ingrese DNI" type="number" [(ngModel)]="celular" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">DNI: </label> 
+      <input class="form-control" placeholder="DNI" type="number" [ngModel]="dni" (ngModelChange)="cambiarDni($event)"/>
+    </div>
+  </div>
+
+  <div class="info bg-warning bg-opacity-25 p-3">
+    <div class="alert alert-success">Tu nombre es: <b>{{nombre}}</b> y tiene {{nombre.length}} digitos.</div>
+    <div class="alert alert-info">Tu telefono es <b>{{celular}}</b> y tiene {{celular.toString().length}} digitos.</div>
+    <div class="alert alert-danger">Tu dni es <b>{{dni}}</b>.</div>
+  </div>
+
+  <div class="click btn btn-secondary w-100 my-2" (click)="onClick()">Haceme click!</div>
+</div>

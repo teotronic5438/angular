@@ -1,0 +1,78 @@
+<!-- eventos, llamadoos a funciones, etc para hacer que la informacion sea dinamica -->
+<div class="row g-3">
+    <div class="col-4">
+        <p>Nombre del empleado: <span class="text-primary">{{nombre}}</span></p>
+        <p>Apellido del empleado: <span class="text-success">{{apellido}}</span></p>
+    </div>
+    <div class="col-4">
+        <p>Edad del empleado: <span class="text-secondary">{{edad < 18 ? "Menor de Edad" : "Mayor de Edad"}}</span></p>
+        <p>Empresa del empleado: <span class="text-danger">{{empresa.value}}</span></p>
+    </div>
+    <div class="col-4">
+        <p>Universidad del empleado: <span class="text-warning">{{universidad.value}}</span></p>        
+    </div>
+</div>
+
+<hr />
+
+<div class="row g-3 align-items-center">
+    <div class="col-auto"><label for="empresa" class="form-label">Introduce la empresa</label></div>
+    <div class="col-auto"><input type="text" name="empresa" id="empresa" class="form-control mb-2" #empresa></div>
+    <div class="col-auto pb-2">
+        <button class="btn btn-primary" type="submit"(click)="llamaEmpresa(empresa.value)">Cambiar Empresa</button>
+    </div>
+</div>
+<hr />
+<div class="row g-3 align-items-center">
+    <!-- Union o puente de propiedad disabled a propiedad habilitacionCuadro -->
+    <div class="col-auto"><label for="universidad" class="form-label">Introduce la Universidad</label></div>
+    <div class="col-auto">
+        <input type="text" name="universidad" id="universidad" class="form-control" #universidad (keyup)="0" 
+        [disabled]="habilitacionCuadro">
+    </div>
+    <div class="col-auto">
+        <h5>Uso de Property Binding</h5>
+    </div>
+    <!-- Union o puente de propiedad disabled a propiedad habilitacionCuadro -->
+</div>
+
+<hr />
+
+<div class="row g-3"> 
+    <div class="form-check col-6">
+        <!-- demostracion de event binding -->
+        <p>{{textoDeRegistro}}</p>
+        <div class="form-check-inline">
+            <label class="form-check-label" for="registrado">Registrado</label>
+            <input class="form-check-input" type="radio" id="registrado" name="nRegistro" [checked]="usuRegistrado"
+            (click)="setusuarioRegistrado($event)" value="si"/>
+        </div> &nbsp;&nbsp;
+        <div class="form-check-inline">
+            <label class="form-check-label" for="noregistrado">No registrado</label>
+            <input class="form-check-input" type="radio" id="noregistrado" name="nRegistro" [checked]="usuRegistrado"
+            (click)="setusuarioRegistrado($event)" value="no" />      
+        </div>
+        {{setRegistroUsuario()}}
+        <!-- demostracion de event binding -->
+    </div>
+    <div class="col-6">
+        <h5>Uso de Event Binding</h5>
+    </div>
+</div>
+
+  <hr />
+
+  <div>
+    <p>Empresa Binding del empleado: <span class="text-primary">{{empresabinding}}</span></p>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="empresa2" class="col-form-label">Introduce la empresa: </label>
+        </div>
+        <div class="col-auto">
+            <input type="text" id="empresa2" class="form-control" [(ngModel)]="empresabinding">
+        </div>
+        <div class="col-auto">
+            <h5>Uso de Binding bidireccional o two way binding</h5>
+        </div> 
+    </div>
+  </div>

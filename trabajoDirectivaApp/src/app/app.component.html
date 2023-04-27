@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="text-center text-primary bg-warning-subtle py-2">{{titulo}} - {{saludo}}</h1>
+  <form>
+    <div class="mb-1">
+      <label for="exampleInputEmail1" class="form-label">Nombre:</label>
+      <input type="text" name="nombre" class="form-control" [(ngModel)]="nombre"/>
+    </div>
+    <div class="mb-1">
+      <label for="exampleInputEmail1" class="form-label">Apellido:</label>
+      <input type="text" name="apellido" class="form-control" [(ngModel)]="apellido"/>
+    </div>
+    <div class="mb-1 text-center">
+      <button type="submit" class="btn btn-primary" (click)="registrarUsuario()">Registrar</button>
+    </div>
+  </form>
+
+  <p class="alert alert-info" *ngIf="registrado; else sinRegistrar">{{mensaje}} a nombre de {{nombre}} {{apellido}}</p>
+
+  <ng-template #sinRegistrar>
+    <p class="bg-warning-subtle text-center p-3 my-2">Nadie registrado</p>
+  </ng-template>
+  
+  <hr />
+
+  <ul>
+    <li *ngFor="let entrada of entradas; index as i;">
+      <span style="font-size: larger; font-weight: bold;">{{entrada.titulo}}</span> - entrada {{i+1}}
+    </li>
+  </ul>
+
+</div>

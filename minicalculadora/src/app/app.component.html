@@ -1,0 +1,31 @@
+<h1 class="text-center bg-primary-subtle p-3">{{title}}</h1>
+<div class="container">
+  <form>
+    <!-- datos del numero 1 -->
+    <div class="row g-4">
+      <div class="col-auto">
+        <label for="numero1" class="col-form-label">Numero 1:</label>
+      </div>
+      <div class="col-auto">
+        <input type="text" id="numero1" class="form-control" [(ngModel)]="numero1" name="numero1">
+      </div>
+
+      <!-- datos del numero 2 -->
+      <div class="col-auto">
+        <label for="numero2" class="col-form-label">Numero 2:</label>
+      </div>
+      <div class="col-auto">
+        <input type="text" id="numero2" class="form-control" [(ngModel)]="numero2" name="numero1">
+      </div>
+
+      <!-- operaciones de suma -->
+      <div class="col-auto">
+        <button class="btn btn-primary" (click)="sumar()">+</button>
+        <button class="btn btn-success mx-2" (click)="restar()">-</button>
+        <button class="btn btn-secondary mx-2" (click)="multiplicar()">*</button>
+        <button class="btn btn-warning" (click)="dividir()">/</button>
+      </div>
+    </div>
+  </form>
+  <p class="my-2">Resultado: <span class="text-primary">{{resultado}}</span></p>
+</div>
