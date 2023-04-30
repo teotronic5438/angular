@@ -25,8 +25,9 @@
       </table>
     </div>
 
-    <div class="col-6">
+    <div class="col-6 bg-warning-subtle">
       <h3 class="bg-primary-subtle text-center p-2">Agregando Empledos</h3>
+      <!-- Formulario empleados -->
       <div class="mb-3 row">
         <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
         <div class="col-sm-10">
@@ -51,9 +52,11 @@
           <input type="text" class="form-control" id="salario" [(ngModel)]="cuadroSalario">
         </div>
       </div>
-      <div class="text-center">
-        <button class="btn btn-primary w-25" type="submit">Agregar</button>
+      <div class="text-center my-2">
+        <button class="btn btn-primary w-25" type="submit" (click)="agregarEmpleado()">Agregar</button>
       </div>
+      <!-- Formulario empleados -->
+
     </div>
   </div>
 </div>
