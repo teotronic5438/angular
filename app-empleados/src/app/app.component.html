@@ -1,62 +1,48 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
-      <h3 class="text-center text-primary my-2">{{titulo}}</h3>
-      <!-- <div *ngFor="let empleado of empleados; index as i;">{{empleado.nombre}}</div> -->
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Indice</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Cargo</th>
-            <th scope="col">Salario</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let empleado of empleados; index as i;">
-            <th scope="row">{{i+1}}</th>
-            <td>{{empleado.nombre}}</td>
-            <td>{{empleado.apellido}}</td>
-            <td>{{empleado.cargo}}</td>
-            <td>{{empleado.salario}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
-    <div class="col-6 bg-warning-subtle">
-      <h3 class="bg-primary-subtle text-center p-2">Agregando Empledos</h3>
-      <!-- Formulario empleados -->
-      <div class="mb-3 row">
-        <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="nombre" [(ngModel)]="cuadroNombre">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="apellido" [(ngModel)]="cuadroApellido">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="cargo" class="col-sm-2 col-form-label">Cargo</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="cargo" [(ngModel)]="cuadroCargo">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="salario" class="col-sm-2 col-form-label">Salario</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="salario" [(ngModel)]="cuadroSalario">
-        </div>
-      </div>
-      <div class="text-center my-2">
-        <button class="btn btn-primary w-25" type="submit" (click)="agregarEmpleado()">Agregar</button>
-      </div>
-      <!-- Formulario empleados -->
+    <h3 class="bg-primary-subtle text-center p-2">Agregando Empledos</h3>
 
+    <!-- Formulario empleados -->
+    <div class="mb-3 col-3">
+      <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="cuadroNombre">
+      </div>
     </div>
+    <div class="mb-3 col-3">
+      <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="apellido" [(ngModel)]="cuadroApellido">
+      </div>
+    </div>
+    <div class="mb-3 col-3">
+      <label for="cargo" class="col-sm-2 col-form-label">Cargo</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="cargo" [(ngModel)]="cuadroCargo">
+      </div>
+    </div>
+    <div class="mb-3 col-3">
+      <label for="salario" class="col-sm-2 col-form-label">Salario</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="salario" [(ngModel)]="cuadroSalario">
+      </div>
+    </div>
+    <div class="text-end">
+      <button class="btn btn-primary w-25" type="submit" (click)="agregarEmpleado()">Agregar</button>
+    </div>
+    <!-- Formulario empleados -->
+
   </div>
+
+  <hr />
+
+  <h3 class="text-center bg-warning-subtle my-2 p-2">{{titulo}}</h3>
+  
+  <app-empleado-hijo-c [empleadosLista]="empleados"></app-empleado-hijo-c>
+
+  <!-- tengo declaracion de variables en el componente padre y luego hago referencia en el componente hijo-->
+  <!-- Para que eto funcione debo pasar la declaracion "empleado" y la declaracion "i" en el hijo -->
+  <!-- Por tanto usamos directiva "@input" -->
+
 </div>
