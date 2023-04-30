@@ -23,10 +23,10 @@
   </form>
   <!-- Formulario de registro -->
 
-  <p class="alert alert-info" *ngIf="registrado; else sinRegistrar">
+  <p [ngClass]="{'alert alert-info': cargo == 'Director' }" *ngIf="registrado; else sinRegistrar">
     {{mensaje}} con el nombre de {{nombre}} {{apellido}} y tiene el cargo de
     <!-- <span [ngStyle]="{color: cargo == 'Director' ? 'red' : 'gray'}">{{cargo}}</span> -->
-    <span [ngClass]="{paraDirectores: cargo == 'Director'}">{{cargo}}</span>
+    <span [ngClass]="{'paraDirectores': cargo == 'Director'}">{{cargo}}</span>
 
   </p>
 
