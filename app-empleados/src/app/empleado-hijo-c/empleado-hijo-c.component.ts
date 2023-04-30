@@ -9,4 +9,10 @@ import { Empleado } from '../empleado.model';
 export class EmpleadoHijoCComponent {
   @Input() empleadosLista: Empleado[];   // defino la variable que viene del padre, que es tipo Empleado (class)
 
+  arrayCaracteristicas = [""];
+
+  agregarCaracteristica(nuevaCaracteristica: string) {
+    this.arrayCaracteristicas.push(nuevaCaracteristica);
+  }
+
 }
