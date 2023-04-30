@@ -12,6 +12,7 @@ export class AppComponent {
   registrado = false; // booleana para que funcione directiva de estructura *ngIf
   nombre:string = "";
   apellido:string = "";
+  cargo: string = "";
 
   // para usar para ngFor, defino una entrada array pero se carga desde el constructor
   // entradas: object[];
