@@ -38,8 +38,31 @@
   <hr />
 
   <h3 class="text-center bg-warning-subtle my-2 p-2">{{titulo}}</h3>
+
+  <div class="row">
+    <!-- <div *ngFor="let empleado of empleados; index as i;">{{empleado.nombre}}</div> -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Indice</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Cargo</th>
+          <th scope="col">Salario</th>
+          <th scope="col">Agregar Caracteristica</th>
+          <th scope="col">Nuevas Caracteristica</th>
+        </tr>
+      </thead>
+
+      <tbody>
+          <app-empleado-hijo-c *ngFor="let empleado of empleados; index as i;" 
+          [empleadosDeLista]="empleado" [indice]="i">
+          </app-empleado-hijo-c>
+      </tbody>
+    </table>
+  </div>
   
-  <app-empleado-hijo-c [empleadosLista]="empleados"></app-empleado-hijo-c>
+
 
   <!-- tengo declaracion de variables en el componente padre y luego hago referencia en el componente hijo-->
   <!-- Para que eto funcione debo pasar la declaracion "empleado" y la declaracion "i" en el hijo -->

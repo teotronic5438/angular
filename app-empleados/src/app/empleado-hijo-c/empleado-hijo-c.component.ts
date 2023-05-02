@@ -7,9 +7,23 @@ import { Empleado } from '../empleado.model';
   styleUrls: ['./empleado-hijo-c.component.css']
 })
 export class EmpleadoHijoCComponent {
-  @Input() empleadosLista: Empleado[];   // defino la variable que viene del padre, que es tipo Empleado (class)
+  // defino la variable que viene del padre, que es tipo Empleado (class)
+  // @Input() empleadosLista: Empleado[]; 
+  @Input() empleadosDeLista: Empleado;
+  @Input() indice:number;
 
-  arrayCaracteristicas = [""];
+  empleados: Empleado[] =[
+    new Empleado("Juan", "Diaz", "Presidente", 7500),
+    new Empleado("Elias", "Orihuela", "Tecnico", 6500),
+    new Empleado("Marcos", "Juares", "Operario", 5500),
+    new Empleado("Tomy", "Lopez", "Oficial", 4500),
+  ];
+
+  empleadoAgregado(empleado: Empleado){
+    this.empleados.push(empleado);
+  }
+
+  arrayCaracteristicas = [''];
 
   agregarCaracteristica(nuevaCaracteristica: string) {
     this.arrayCaracteristicas.push(nuevaCaracteristica);
