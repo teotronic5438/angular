@@ -41,25 +41,36 @@
 
   <div class="row">
     <!-- <div *ngFor="let empleado of empleados; index as i;">{{empleado.nombre}}</div> -->
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Indice</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellido</th>
-          <th scope="col">Cargo</th>
-          <th scope="col">Salario</th>
-          <th scope="col">Agregar Caracteristica</th>
-          <th scope="col">Nuevas Caracteristica</th>
-        </tr>
-      </thead>
+    <!-- <table class="table w-100">
+        <thead>
+          <tr>
+            <th scope="col">Indice</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Salario</th>
+            <th scope="col">Agregar Caracteristica</th>
+            <th scope="col">Nuevas Caracteristica</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table> -->
 
-      <tbody>
-          <app-empleado-hijo-c *ngFor="let empleado of empleados; index as i;" 
-          [empleadosDeLista]="empleado" [indice]="i">
-          </app-empleado-hijo-c>
-      </tbody>
-    </table>
+      <div class="row text-center text-dark my-1 fw-bold">
+        <div class="col-1">Indice</div>
+        <div class="col-1">Nombre</div>
+        <div class="col-1">Apellido</div>
+        <div class="col-1">Cargo</div>
+        <div class="col-1">Salario</div>
+        <div class="col-4">Agregar Caracteristicas</div>
+        <div class="col-3">Nuevas Caracteristicas</div>
+      </div>
+      <hr class="my-1" />
+      <app-empleado-hijo-c *ngFor="let empleado of empleados; index as i;" 
+      [empleadosDeLista]="empleado" [indice]="i">
+      </app-empleado-hijo-c>
+
   </div>
   
 

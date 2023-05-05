@@ -23,7 +23,7 @@ export class EmpleadoHijoCComponent {
     this.empleados.push(empleado);
   }
 
-  arrayCaracteristicas = [''];
+  arrayCaracteristicas: Array<string> = [];
 
   agregarCaracteristica(nuevaCaracteristica: string) {
     this.arrayCaracteristicas.push(nuevaCaracteristica);
