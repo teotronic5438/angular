@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { ServicioEmpleadosService } from './servicio-empleados.service';
 
 @Component({
   selector: 'app-root',
@@ -16,15 +17,26 @@ export class AppComponent {
   ];
 
   agregarEmpleado(){
+
     let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+    
+    // Ahira antes de cargar al array hago uso del servicio llamado la ropiedad del constructor
+    this.miServicio.muestraMensaje(`Nombre del empleado: ${miEmpleado.nombre} ${miEmpleado.apellido}`);
+    
     this.empleados.push(miEmpleado);
     this.cuadroNombre = "";
     this.cuadroApellido = "";
     this.cuadroCargo = "";
     this.cuadroSalario = 0;
   }
+
   cuadroNombre:string ="";
   cuadroApellido:string ="";
   cuadroCargo:string ="";
   cuadroSalario:number =0;
+
+  // La inyeccion de un servicio se hace a traves del constructor o a partir del constructor
+  constructor(private miServicio:ServicioEmpleadosService){
+
+  }
 }
