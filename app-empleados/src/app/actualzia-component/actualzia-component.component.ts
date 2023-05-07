@@ -1,20 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Empleado } from '../empleado.model';
 import { EmpleadosService } from '../empleados.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-actualzia-component',
   templateUrl: './actualzia-component.component.html',
   styleUrls: ['./actualzia-component.component.css']
 })
-export class ActualziaComponentComponent {
+export class ActualziaComponentComponent implements OnInit {
   empleados: Empleado[] = [];
+  indice: number;
 
   // Para que funcione, tengo que injectar el servcio Router e importarlo
-  constructor(private router: Router, private empleadosService: EmpleadosService){
-    this.empleados = this.empleadosService.empleados;
+  constructor(private router: Router, private empleadosService: EmpleadosService, private route: ActivatedRoute) {
+
   } 
+
+  ngOnInit(): void {
+    this.empleados = this.empleadosService.empleados;
+    this.indice = this.route.snapshot.params['id'];
+
+    let empleado: Empleado = this.empleadosService.encontrarEmpleado(this.indice)
+
+    this.cuadroNombre = empleado.nombre;
+    this.cuadroCargo = empleado.cargo;
+    this.cuadroApellido = empleado.apellido;
+    this.cuadroSalario = empleado.salario;
+
+  }
 
   volverHome(){
     // uso la variale del tipo Router y uso el metodo navigate(['ruta_destino'])
@@ -27,17 +41,12 @@ export class ActualziaComponentComponent {
   cuadroSalario:number =0;
 
   /* METODOS DEL COMPONENTE*/
-  agregarEmpleado(){
+  actualizaEmpleado(){
 
     let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
     
-    this.empleadosService.agregarEmpleadoServicio(miEmpleado);
+    this.empleadosService.actualizarEmpleado(this.indice, miEmpleado);
 
-    this.cuadroNombre = "";
-    this.cuadroApellido = "";
-    this.cuadroCargo = "";
-    this.cuadroSalario = 0;
-    
     // recdirecciono al home
     this.volverHome();
   }
