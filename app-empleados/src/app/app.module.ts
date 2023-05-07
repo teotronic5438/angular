@@ -12,12 +12,15 @@ import { ProyectosComponentComponent } from './proyectos-component/proyectos-com
 import { QuienesComponentComponent } from './quienes-component/quienes-component.component';
 import { ContactoComponentComponent } from './contacto-component/contacto-component.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ActualziaComponentComponent } from './actualzia-component/actualzia-component.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [ // es un array de objetos, un objeto por cada ruta
   {path:'', component: HomeComponentComponent},
   {path:'proyectos', component: ProyectosComponentComponent},
   {path:'quienes', component: QuienesComponentComponent},
   {path:'contacto', component: ContactoComponentComponent},
+  {path:'actualiza/:id', component: ActualziaComponentComponent},
 ]
 
 @NgModule({
@@ -28,7 +31,9 @@ const appRoutes: Routes = [ // es un array de objetos, un objeto por cada ruta
     HomeComponentComponent,
     ProyectosComponentComponent,
     QuienesComponentComponent,
-    ContactoComponentComponent
+    ContactoComponentComponent,
+    ActualziaComponentComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
