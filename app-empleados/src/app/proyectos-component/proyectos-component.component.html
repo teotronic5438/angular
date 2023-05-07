@@ -1,1 +1,38 @@
-<p>proyectos-component works!</p>
+<p class="h3 text-center text-primary">proyectos-component works!</p>
+
+<div class="container">
+    <div class="formulario row">
+        <!-- Formulario empleados -->
+        <div class="mb-3 col-3">
+            <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nombre" [(ngModel)]="cuadroNombre">
+            </div>
+            </div>
+            <div class="mb-3 col-3">
+            <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="apellido" [(ngModel)]="cuadroApellido">
+            </div>
+            </div>
+            <div class="mb-3 col-3">
+            <label for="cargo" class="col-sm-2 col-form-label">Cargo</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cargo" [(ngModel)]="cuadroCargo">
+            </div>
+            </div>
+            <div class="mb-3 col-3">
+            <label for="salario" class="col-sm-2 col-form-label">Salario</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="salario" [(ngModel)]="cuadroSalario">
+            </div>
+            </div>
+            <div class="text-end">
+            <button class="btn btn-primary w-25" type="submit" (click)="agregarEmpleado()">Agregar</button>
+            </div>
+            <!-- Formulario empleados -->
+    </div>
+    <div>
+        <button class="btn btn-success" (click)="volverHome()">Volver a Home</button>
+    </div>
+</div>
