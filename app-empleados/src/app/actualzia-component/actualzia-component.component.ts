@@ -50,4 +50,11 @@ export class ActualziaComponentComponent implements OnInit {
     // recdirecciono al home
     this.volverHome();
   }
+
+  eliminaEmpleado(){
+    this.empleadosService.eliminarEmpleado(this.indice);
+
+    // recdirecciono al home
+    this.volverHome();
+  }
 }

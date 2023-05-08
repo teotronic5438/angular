@@ -40,4 +40,9 @@ export class EmpleadosService {
         // empleadoModificado.salario = empleado.salario;
         this.empleados[indice] = empleado;
     }
+
+    eliminarEmpleado(indice: number){
+        this.empleados.splice(indice, 1);
+        // elimina el indice del array, un solo item
+    }
 };
