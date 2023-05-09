@@ -6,13 +6,23 @@
   <div class="col-1">{{empleadosDeLista.cargo}}</div>
   <div class="col-1">{{empleadosDeLista.salario}}</div>
 
-  <div class="col-4">
-    <button class="btn btn-warning" [routerLink]="['/actualiza', indice]">Edit</button>&nbsp;
+  <div class="col-5">
+
+    <button class="btn btn-warning mx-1" [routerLink]="['/actualiza', indice]" 
+            [queryParams]="{accion: '1'}">
+      Editar
+    </button>
+    <button class="btn btn-danger mx-1" [routerLink]="['/actualiza', indice]"
+            [queryParams]="{accion: '2'}">
+      Borrar
+    </button>
+
     <app-caracteristicas-empleado-c (caracteristicasEmpleados)="agregarCaracteristica($event)">
     </app-caracteristicas-empleado-c>
+
   </div>
 
-  <div class="col-3">
+  <div class="col-2">
     <ul style="list-style:none; display: flex; flex-wrap: wrap;">
       <li style="margin-right: 5px;" *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</li>
     </ul>

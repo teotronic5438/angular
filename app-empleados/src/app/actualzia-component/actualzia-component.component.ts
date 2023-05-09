@@ -28,6 +28,9 @@ export class ActualziaComponentComponent implements OnInit {
     this.cuadroApellido = empleado.apellido;
     this.cuadroSalario = empleado.salario;
 
+    // voy a pasar el valor de accion pasada por queryParms
+    this.accion = parseInt(this.route.snapshot.queryParams['accion']);
+
   }
 
   volverHome(){
@@ -41,20 +44,36 @@ export class ActualziaComponentComponent implements OnInit {
   cuadroSalario:number =0;
 
   /* METODOS DEL COMPONENTE*/
+  // actualizaEmpleado(){
+
+  //   let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+    
+  //   this.empleadosService.actualizarEmpleado(this.indice, miEmpleado);
+
+  //   // recdirecciono al home
+  //   this.volverHome();
+  // }
+
+  // eliminaEmpleado(){
+  //   this.empleadosService.eliminarEmpleado(this.indice);
+
+  //   // recdirecciono al home
+  //   this.volverHome();
+  // }
+
+  accion: number;
+
   actualizaEmpleado(){
 
-    let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+    if (this.accion == 1){
+      let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+      this.empleadosService.actualizarEmpleado(this.indice, miEmpleado);
+      this.volverHome();
+
+    } else {
+      this.empleadosService.eliminarEmpleado(this.indice);
+      this.volverHome();
+    }
     
-    this.empleadosService.actualizarEmpleado(this.indice, miEmpleado);
-
-    // recdirecciono al home
-    this.volverHome();
-  }
-
-  eliminaEmpleado(){
-    this.empleadosService.eliminarEmpleado(this.indice);
-
-    // recdirecciono al home
-    this.volverHome();
   }
 }
