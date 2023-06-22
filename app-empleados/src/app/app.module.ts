@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
 import { EmpleadoHijoCComponent } from './empleado-hijo-c/empleado-hijo-c.component';
 import { CaracteristicasEmpleadoCComponent } from './caracteristicas-empleado-c/caracteristicas-empleado-c.component';
 import { ServicioEmpleadosService } from './servicio-empleados.service';
@@ -14,6 +14,9 @@ import { ContactoComponentComponent } from './contacto-component/contacto-compon
 import { RouterModule, Routes } from '@angular/router';
 import { ActualziaComponentComponent } from './actualzia-component/actualzia-component.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DataServices } from './data.services';
+
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [ // es un array de objetos, un objeto por cada ruta
   {path:'', component: HomeComponentComponent},
@@ -39,8 +42,9 @@ const appRoutes: Routes = [ // es un array de objetos, un objeto por cada ruta
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes), // esto tambien es importante, indicandole la constante para ver las rutas
+    HttpClientModule,
   ],
-  providers: [ServicioEmpleadosService, EmpleadosService],
+  providers: [ServicioEmpleadosService, EmpleadosService, DataServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
